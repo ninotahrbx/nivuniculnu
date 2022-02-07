@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+{% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {% form_theme form 'bootstrap_5_layout.html.twig' %}
+            <style>
+           input{
+               width: 100px;
+           }
+body{
+    text-align: center;
+}
+
+form{
+    width: 200px;
+    text-align: center;
+}
+            </style>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+{% block body %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-lg-6 mx-auto">
+      {{form_start(form)}}
+        {{form_row(form.civilite)}}
+        {{form_row(form.pseudo)}}
+        {{form_row(form.email)}}
+        {{form_row(form.mdp)}}                      
+        {{form_row(form.telUtilisateur)}}
+         <div clas="text-center">
+         {{form_row(form.save)}}
+         </div>
+      {{form_end(form)}}
+    <div>
+  </div>
+</div>
+ 
+{% endblock %}
