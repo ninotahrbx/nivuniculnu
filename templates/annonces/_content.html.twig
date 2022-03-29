@@ -1,0 +1,31 @@
+<div class="jumbotron filtre-content">
+     
+       <div class="card mb-3  mx-auto shadow-sm p-3 mb-5 bg-body rounded" style="width: 500px; padding: 20px;">
+          <div class="row g-0">
+           <a href="{{ path('annonce', {"idBien": annonce.idBien}) }}">
+            <div class="card-img-top" style="width: 100%;" >
+              <img src="uploads/{{ annonce.img }}" style="width: 100%; max-height: 176px" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8" style="width: 100%;">
+              <div class="card-body text-white " style="background-color: #61b515">
+                 
+                {% for filtresTypeAnnonce in filtresTypeAnnonces %} 
+                <h3 class="card-title">Catégorie : {{filtresTypeAnnonce.libelleTypeAnnonce}}</h3> {% endfor %}
+                {% for filtresTypeBien in filtresTypeBiens %} <h5 class="card-text">{{filtresTypeBien.libelleType }}</h5>{% endfor %}                        
+                <p class="card-text">Secteur : {{ annonce.slug }}</p>
+                {# <p class="card-text">{{ annonce.secteur }}</p> #}
+                {# <p class="card-text">Surface: {{ annonce.surface }}</p> #}
+                <p class="card-text">Composition : {{ annonce.nombrePiece }} pieces</p>
+                <p class="card-text">Prix : {{ annonce.prix }} euros</p>                        
+                {# <p class="card-text">Exposition: {{ annonce.exposition}}</p>
+                <p class="card-text">Exterieur: {{ annonce.exterieur }}</p>
+                <p class="card-text">Energie: {{ annonce.energie }}</p> #}
+                {# <p class="card-text">{{ annonce.commentaire }}</p> #}
+                {# <p class="card-text"><small class="text-muted">{{ annonce.dateParution }}</small></p> #}
+              </div>
+            </div>
+           </a> 
+          </div>    
+        </div>
+      
+    </div> 

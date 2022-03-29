@@ -22,19 +22,19 @@ class TypeAnnonceRepository extends ServiceEntityRepository
     // /**
     //  * @return TypeAnnonce[] Returns an array of TypeAnnonce objects
     //  */
-    /*
-    public function findByExampleField($value)
+    
+   /*  public function findByLibelleTypeAnnonce($idBien)
     {
-        return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.Bien = :b')
             ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('b.idTypeAnnonce', 'ASC')
+            // ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+     */
 
     /*
     public function findOneBySomeField($value): ?TypeAnnonce

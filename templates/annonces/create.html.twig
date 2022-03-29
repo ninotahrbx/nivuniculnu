@@ -1,0 +1,274 @@
+{% extends 'base.html.twig' %}
+
+
+{% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+            {% form_theme form 'bootstrap_5_layout.html.twig' %}
+            <style>
+ h2 {
+    font-family: 'Pacifico', cursive;
+    color: #61b515;
+}
+
+body{
+
+  color:black !important;
+  background-color: #0a3a5b !important;
+  background-image: url('../uploads/fondek6.jpg') !important;
+  background-position:center center;
+  background-size: contain;
+  background-repeat:no-repeat;
+  background-position: center !important;
+  background-attachment:fixed;
+}
+
+a{
+    color: #61b515 !important;
+}
+
+.container{  
+ 
+  margin-top: 200px;
+  display: block;
+  position:  relative;
+}
+
+.row{
+  margin-top: 200px;
+  left: 0; 
+}
+
+.navbar{
+    position: fixed !important;
+    background-color: white;   
+    box-shadow: 1px 0px 1px 1px black;   
+    top: 0; left: 0; right: 0;
+}
+
+.nav-item{
+    padding-left: 50px;
+    padding-right: 50px;
+    border-right: 0.3px solid #0a3a5b !important;
+    font-family: 'Meow Script', cursive; 
+    font-size: 30px;
+}
+
+.card{
+    border: 2px green !important;
+    text-align: center;
+}
+
+h5{
+    color: #61b515;
+    font-family: 'Indie Flower', cursive;
+    font-size: 30px !important;
+}
+
+.nav-item:hover{
+background-color: #61b515;
+}
+
+.nav-link:hover{
+    color: ivory !important;
+    
+transform: scale(1.2);
+color: ivory !important;
+}
+
+p{
+    font-family: 'Yaldevi', sans-serif;
+}
+
+#logo{
+  z-index: 1;       
+}
+
+#slogan{
+  font-family: 'Meow Script', cursive;
+  font-size: 40px;      
+  margin-left: 150px;
+  color: #0a3a5b;    
+}
+
+.d-flex{
+  position: fixed;
+}
+
+#titre{
+  margin-left: 40px;
+  font-family: 'Merriweather', serif;
+  color:#61B515;
+}
+
+.btn{
+  background-color: #0a3a5b;
+       
+}
+
+.form_widget{
+ padding: 20px;
+}
+
+            </style>
+        {% endblock %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+
+        
+{% block body %}
+
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <img id="logo" class="img-fluid" src="../uploads/logo.png" style="height: 80px; width: 80px;" alt="">
+    <h1 id="titre" class="">Qi vend Qi loue ?</h1>
+    <h3 id="slogan" class="justify-content-center">l'immo intelligent !!</h3>
+    <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">Acceuil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces/creer-annonce">Vendre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/annonces">Acheter</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces">Louer</a>
+        </li>        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Nous joindre</a></li>
+            <li><a class="dropdown-item" href="#">à propos</a></li>           
+          </ul>
+        </li>       
+      </ul>      
+        <div class="text-end text-white justify-content-end">
+          <button id="login" type="button" class="btn text-white">Login</button>
+          <button id="signUp" type="button" class="btn text-white">Sign-up</button>
+        </div>     
+    </div>
+  </div>
+</nav>
+  </header>
+
+
+
+  
+{% endblock %}
+
+
+
+
+{% block form %}
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg-6 mx-auto text-white h5 shadow-lg text-shadow" style="background-color: #788af057">
+      {{form_start(form)}}
+
+      <label for="idTypeAnnonce">Type d'annonce :</label>
+        {{form_widget(form.idTypeAnnonce)}}
+<br>
+        <label for="idType">Type de bien :</label>
+        {{form_widget(form.idType)}} 
+<br>
+        <label for="surface">Surface en m2 :</label>
+         {{form_widget(form.surface)}}  
+  <br>       
+        
+        
+       <label for="surface">Nombre de pieces :</label>
+        {{form_widget(form.nombrePiece)}} 
+<br>
+      
+        {# 
+        <label for="codepostal">Code Postal</label>
+       {{form_widget(form.codePostal)}}   #}  
+
+         
+        {#  <label for="ville">Ville</label>                
+        {{form_widget(form.ville)}} #}
+
+            <div class="form-group text-white h5">
+				    <label for="codepostal">Code Postal</label>
+				    <input type="text" name="codepostal" class="form-control" placeholder="@75000" id="codepostal">
+				    <div style="display: none; color: #f55;" id="error-message"></div>
+				  </div> 
+
+				  <div class="form-group text-white h5">
+				    <label for="ville">Ville</label>
+				    <select class="form-control" name="ville" id="ville"></select>
+          </div> 
+ 
+           
+        {# {{form_row(form.secteur)}} #}
+        
+         {{form_row(form.prix)}}
+        </div>
+        <div class="col-lg-6 mx-auto text-white h5 shadow-lg" style="background-color: #788af057">              
+        {{form_row(form.exterieur)}}                      
+        {{form_row(form.exposition)}}
+        {{form_row(form.energie)}}
+        {{form_row(form.description)}}        
+        {{form_row(form.img)}}
+         <div class="text-center text-white">
+         {{form_row(form.save)}}
+         </div>
+      {{form_end(form)}}
+    <div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+<script>
+$(document).ready(function(){
+	const apiUrl = 'https://geo.api.gouv.fr/communes?codePostal=';
+	const format = '&format=json';
+
+	let codePostal = $('#codepostal'); 
+  let ville = $('#ville'); 
+  let errorMessage = $('#error-message'); 
+
+	$(codePostal).on('blur', function(){
+		let code = $(this).val();		
+		let url = apiUrl+code+format;
+
+		fetch(url, {method: 'get'}).then(response => response.json()).then(results => {
+			$(ville).find('option').remove();
+			if(results.length){
+				$(errorMessage).text('').hide();
+				$.each(results, function(key, value){
+					$(ville).append('<option value="'+value.nom+'">'+value.nom+'</option>');
+				});
+			}
+			else{
+				if($(codePostal).val()){
+					console.log('Erreur de code postal.');
+					$(errorMessage).text('Aucune commmune avec ce code postal.').show();
+				}
+				else{
+					$(errorMessage).text('').hide();
+				}
+			}
+		}).catch(err => {
+			$(ville).find('option').remove();
+		});
+	});
+});
+
+</script> 
+{% endblock %}

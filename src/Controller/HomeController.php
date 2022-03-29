@@ -11,11 +11,42 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class HomeController extends AbstractController
 {
     #[Route('/home', name: 'home')]
-    public function index(UtilisateurRepository $repo_utilisateur, BienRepository $repo_bien): Response
+    public function index(): Response
     {
         return $this->render('home/index.html.twig', [
             'controller_name' => 'ma gueule!',
-            'utilisateur' => $utilisateur,
+            'subtitle' => 'Cliquez ici',
+            'event' => 'REJOINDRE'
+
+            // 'utilisateur' => $utilisateur,
         ]);
     }
+
+
+    #[Route('/home/contact', name: 'contact')]
+    public function contacter(UtilisateurRepository $repo_utilisateur, BienRepository $repo_bien): Response
+    {
+        return $this->render('home/index.html.twig', [
+            'controller_name' => 'ma gueule!',
+            'subtitle' => 'Cliquez ici',
+            'event' => 'REJOINDRE'
+
+            // 'utilisateur' => $utilisateur,
+        ]);
+    }
+
+
+    #[Route('/home/documentation', name: 'documentation')]
+    public function consulter(): Response
+    {
+        return $this->render('home/documentation.html.twig', [
+            'controller_name' => 'ma gueule!',
+            'subtitle' => 'Cliquez ici',
+            'event' => 'REJOINDRE'
+
+            // 'utilisateur' => $utilisateur,
+        ]);
+    }
+
+
 }

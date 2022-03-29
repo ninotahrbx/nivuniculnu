@@ -7,9 +7,12 @@ use App\Form\CreateCompteType;
 use App\Entity\CompteUtilisateur;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AuthController extends AbstractController
@@ -17,10 +20,16 @@ class AuthController extends AbstractController
     #[Route('/auth/login', name: 'login')]
     public function index(): Response
     {
+       
         return $this->render('auth/index.html.twig', [
-            'controller_name' => 'AuthController',
+            'controller_name' => 'LoginController',
+           
+          
         ]);
     }
+
+
+
 
 
     #[Route('/auth/register', name: 'register')]
@@ -44,6 +53,7 @@ class AuthController extends AbstractController
            $utilisateur->setIpInscription($_SERVER['REMOTE_ADDR']);
            $utilisateur->setTracker($_SERVER['HTTP_USER_AGENT']);
            $utilisateur->setRoleUtilisateur('ROLE_USER');
+        //    $utilisateur->setCivilite('H');
            
  
            $manager->persist($utilisateur);
@@ -51,25 +61,30 @@ class AuthController extends AbstractController
  
            return $this->redirectToRoute('login');
  
-
+        }
         return $this->render('auth/register.html.twig', [
             'form'=> $form->createView()
 
             
         ]);
-        }
+   }
 
-    }
+    
 
-   #[Route('/auth/logout', name: 'logout')]
+     #[Route('/logout', name: 'app_logout')]
    public function logout(): Response
    {
+
+    throw new \Exception('logout() should never be reached');
+    
+    return $this->redirectToRoute('home');
+
        return $this->render('auth/index.html.twig', [
            'controller_name' => 'AuthController',
        ]);
    }
-
-
+ 
+ 
 
 
 

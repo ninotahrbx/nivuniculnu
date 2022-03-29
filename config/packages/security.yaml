@@ -23,6 +23,9 @@ security:
                 login_path: login
                 check_path: login  
 
+            logout:
+                path: app_logout
+
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
 
@@ -33,7 +36,16 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
-         - { path: ^/home, roles: ROLE_USER }
+            - { path: ^/annonces/creer-annonce, roles: ROLE_USER }
+            - { path: ^/annonces/contacter, roles: ROLE_USER }
+        # - { path: ^/annonce/contacter, roles: ROLE_USER }
+            - { path: ^/auth/, roles: PUBLIC_ACCESS }
+            - { path: ^/auth/register, roles: PUBLIC_ACCESS }
+            - { path: ^/home/, roles: PUBLIC_ACCESS }
+            - { path: ^/documentation, roles: PUBLIC_ACCESS }
+            - { path: ^/annonces/l, roles: PUBLIC_ACCESS }
+            - { path: ^/annonces/annonce, roles: PUBLIC_ACCESS }
+
 
 when@test:
     security:

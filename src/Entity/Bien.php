@@ -2,7 +2,14 @@
 
 namespace App\Entity;
 
+
+use App\Entity\Img;
+use DateTimeInterface;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\CompteUtilisateur;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints\Date;
 
 /**
  * Bien
@@ -22,23 +29,29 @@ class Bien
     private $idBien;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="surface", type="string", length=50, nullable=false)
+     * @ORM\Column(name="surface", type="integer", length=50, nullable=false)
      */
     private $surface;
 
     /**
-     * @var string
+     * @var int
      *
-     * @ORM\Column(name="nombre_piece", type="string", length=50, nullable=false)
+     * @ORM\Column(name="nombre_piece", type="integer", length=50, nullable=false)
      */
     private $nombrePiece;
 
+ 
+
+
+
     /**
      * @var string
-     *
-     * @ORM\Column(name="img", type="string", length=250, nullable=false)
+     * 
+     * 
+     * @ORM\OneToMany(targetEntity="App\Entity\Img", mappedBy="bien" )
+     * @ORM\Column(name="img", type="string", length=255, nullable=false)
      * 
      */
     private $img;
@@ -53,9 +66,16 @@ class Bien
     /**
      * @var string
      *
-     * @ORM\Column(name="secteur", type="string", length=50, nullable=false)
+     * @ORM\Column(name="code_postal", type="string", length=10, nullable=false)
      */
-    private $secteur;
+    private $codePostal;
+
+ /**
+     * @var string
+     *
+     * @ORM\Column(name="ville", type="string", length=50, nullable=false)
+     */
+    private $ville;
 
     /**
      * @var string
@@ -65,9 +85,9 @@ class Bien
     private $exposition;
 
     /**
-     * @var bool
+     * @var string
      *
-     * @ORM\Column(name="exterieur", type="boolean", nullable=false)
+     * @ORM\Column(name="exterieur", type="string", nullable=false)
      */
     private $exterieur;
 
@@ -90,12 +110,22 @@ class Bien
      *
      * @ORM\Column(name="commentaire", type="string", length=250, nullable=false)
      */
-    private $commentaire;
+    private $description;
+
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateParution", type="date", nullable=false)
+     */
+    private $dateParution;
+
+
 
     /**
      * @var \TypeBien
      *
-     * @ORM\ManyToOne(targetEntity="TypeBien")
+     * @ORM\ManyToOne(targetEntity="TypeBien", inversedBy="idBien")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_type", referencedColumnName="id_type")
      * })
@@ -115,7 +145,7 @@ class Bien
     /**
      * @var \TypeAnnonce
      *
-     * @ORM\ManyToOne(targetEntity="TypeAnnonce")
+     * @ORM\ManyToOne(targetEntity="TypeAnnonce", inversedBy="idBien")
      * @ORM\JoinColumns({
      *   @ORM\JoinColumn(name="id_type_annonce", referencedColumnName="id_type_annonce")
      * })
@@ -132,39 +162,49 @@ class Bien
      */
     private $idClick;
 
+   
+
     /**
-     * @var \Region
-     *
-     * @ORM\ManyToOne(targetEntity="Region")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="id_region", referencedColumnName="id_region")
-     * })
+     * @ORM\Column(type="boolean")
      */
-    private $idRegion;
+    private $active;
+
+
+
+
+    public function __construct()
+    {
+        $this->lien = new ArrayCollection();
+    }
 
     public function getIdBien(): ?int
     {
         return $this->idBien;
     }
 
-    public function getSurface(): ?string
+    public function setIdBien(int $idBien): ?int
+    {
+        $this->idBien = $idBien;
+    }
+
+    public function getSurface(): ?int
     {
         return $this->surface;
     }
 
-    public function setSurface(string $surface): self
+    public function setSurface(int $surface): self
     {
         $this->surface = $surface;
 
         return $this;
     }
 
-    public function getNombrePiece(): ?string
+    public function getNombrePiece(): ?int
     {
         return $this->nombrePiece;
     }
 
-    public function setNombrePiece(string $nombrePiece): self
+    public function setNombrePiece(int $nombrePiece): self
     {
         $this->nombrePiece = $nombrePiece;
 
@@ -195,17 +235,30 @@ class Bien
         return $this;
     }
 
-    public function getSecteur(): ?string
+    public function getCodePostal(): ?string
     {
-        return $this->secteur;
+        return $this->codePostal;
     }
 
-    public function setSecteur(string $secteur): self
+    public function setCodePostal(string $codePostal): self
     {
-        $this->secteur = $secteur;
+        $this->codePostal = $codePostal;
 
         return $this;
     }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(string $ville): self
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
 
     public function getExposition(): ?string
     {
@@ -219,12 +272,12 @@ class Bien
         return $this;
     }
 
-    public function getExterieur(): ?bool
+    public function getExterieur(): ?string
     {
         return $this->exterieur;
     }
 
-    public function setExterieur(bool $exterieur): self
+    public function setExterieur(string $exterieur): self
     {
         $this->exterieur = $exterieur;
 
@@ -255,17 +308,30 @@ class Bien
         return $this;
     }
 
-    public function getCommentaire(): ?string
+    public function getDescription(): ?string
     {
-        return $this->commentaire;
+        return $this->description;
     }
 
-    public function setCommentaire(string $commentaire): self
+    public function setDescription(string $description): self
     {
-        $this->commentaire = $commentaire;
+        $this->description = $description;
 
         return $this;
     }
+
+    public function getDateParution(): ?\DateTimeInterface
+    {
+        return $this->dateParution;
+    }
+
+    public function setDateParution(\DateTimeInterface $dateParution): self
+    {
+        $this->dateParution = $dateParution;
+
+        return $this;
+    }
+
 
     public function getIdType(): ?TypeBien
     {
@@ -327,5 +393,46 @@ class Bien
         return $this;
     }
 
+    
 
+
+  /**
+   * @return Collection|CompteUtilisateur[]
+   */
+
+/*    public function getIdUtilisateur(): ?CompteUtilisateur
+   {  
+    return $this->idUtilisateur;
+   }
+
+   public function setIdUtilisateur(?CompteUtilisateur $idUtilisateur): self
+   {
+    $this->idUtilisateur = $idUtilisateur;
+
+    return $this;
+   } 
+
+ */
+
+
+
+    /**
+     * Get the value of active
+     */ 
+    public function getActive()
+    {
+        return $this->active;
+    }
+
+    /**
+     * Set the value of active
+     *
+     * @return  self
+     */ 
+    public function setActive($active)
+    {
+        $this->active = $active;
+
+        return $this;
+    }
 }

@@ -18,18 +18,19 @@ class CreateCompteType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-           // ->add('id_utilisateur', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('civilite', ChoiceType::class, ['attr' => [
+           //->add('id_utilisateur', TextType::class, ['attr' => ['class' => 'form-control']])
+            
+            ->add('civilite', ChoiceType::class, [
                 'choices' => [
                     'Monsieur' => 'H',
                     'Madame' => 'F'
                 ],
-            ]])
+            ]) 
             ->add('pseudo', TextType::class, ['attr' => ['class' => 'form-control']])
             ->add('mdp', PasswordType::class, ['attr' => ['class' => 'form-control']])
             ->add('email', EmailType::class, ['attr' => ['class' => 'form-control']])
-            ->add('tel_utilisateur', TextType::class, ['attr' => ['class' => 'form-control']])
-            ->add('save', SubmitType::class, ['attr' => ['class' => 'btn btn-success mt-5'],'label' => 'Create Task']);
+            ->add('telUtilisateur', TextType::class, ['attr' => ['class' => 'form-control']])
+            ->add('save', SubmitType::class, ['attr' => ['class' => 'btn btn-success mt-5'],'label' => "S'enregistrer"]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void

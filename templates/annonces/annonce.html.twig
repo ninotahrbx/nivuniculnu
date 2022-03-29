@@ -1,0 +1,301 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}annonces{% endblock %}
+{% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+<style>
+h2 {
+    font-family: 'Pacifico', cursive;
+    color: #61b515;
+}
+
+body{
+  
+  
+  
+}
+
+a{
+    color: #61b515 !important;
+}
+
+
+
+
+.photoEntete{
+    background-image: url('uploads/entete.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    height: 700px;
+    
+    box-shadow: 1px 0px 1px 1px black;
+    z-index: 1;
+}
+
+.container-fluid{
+    
+     top: 0; left: 0; right: 0;
+    
+}
+
+.row{
+  left: 0; 
+}
+.navbar{
+    position: fixed !important;
+    z-index: 1;
+    background-color: white;
+    
+    box-shadow: 1px 0px 1px 1px black;
+    
+    top: 0; left: 0; right: 0;
+}
+
+
+
+.nav-item{
+    padding-left: 50px;
+    padding-right: 50px;
+    border-right: 0.3px solid #0a3a5b !important;
+    font-family: 'Meow Script', cursive; 
+    font-size: 30px;
+}
+
+.card{
+    margin: 200px;
+    
+    text-align: center;
+    border: 0.3px solid #0a3a5b !important;
+}
+
+
+.nav-item:hover{
+background-color: #61b515;
+}
+
+.nav-link:hover{
+    color: ivory !important;
+    
+transform: scale(1.2);
+color: ivory !important;
+}
+
+
+
+p{
+    font-family: 'Yaldevi', sans-serif;
+}
+
+ 
+   #logo{
+       z-index: 1;
+      
+        
+   }
+
+   #slogan{
+       font-family: 'Meow Script', cursive;
+       font-size: 40px;
+       
+       margin-left: 150px;
+       color: #0a3a5b;
+      
+   }
+
+   .d-flex{
+     position: fixed;
+   }
+
+  #titre{
+
+  margin-left: 40px;
+   font-family: 'Merriweather', serif;
+   color:#61B515;
+  }
+
+   .btn{
+       background-color: #0a3a5b;
+       
+   }
+
+  .haut {
+  margin-top: 200px;
+
+  }
+
+   
+</style>
+{% endblock %}
+{% block body %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <img id="logo" class="img-fluid" src="../uploads/logo.png" style="height: 80px; width: 80px;" alt="">
+    <h1 id="titre" class="">Qi vend Qi loue ?</h1>
+    <h3 id="slogan" class="justify-content-center">l'immo intelligent !!</h3>
+    <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces/creer-annonce">Vendre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/annonces">Acheter</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces">Louer</a>
+        </li>        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Nous joindre</a></li>
+            <li><a class="dropdown-item" href="#">à propos</a></li>           
+          </ul>
+        </li>       
+      </ul>      
+        <div class="text-end text-white justify-content-end">
+          <button id="login" type="button" class="btn text-white">Login</button>
+          <button id="signUp" type="button" class="btn text-white">Sign-up</button>
+        </div>     
+    </div>
+  </div>
+</nav>
+  </header>
+
+
+
+  
+{% endblock %}
+
+{% block sidebar %}
+
+<div class="container-fluid filter">
+  <div class="row ">
+    <div class="col mt-5 align-self-center">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white align-self-center" style="width: 280px; height: 2000px; background-color:#0a3a5b ;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>          
+        </a>
+        <br>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="mt-5">
+            <h1 class="text-white" aria-current="page">          
+              Filtres
+            </h1>
+          </li>    
+          <form method="POST" class="filter-form" id="filter"> 
+          {{form_start(form)}}   
+            <li>
+              <label for="minSurface">Type de bien:</label>
+              <div class="form-check form-switch checked">
+               {{form_widget(form.idType)}}  
+              </div>           
+            </li>  
+            <br>  
+            <li>
+              <label for="minSurface">Type d'annonce:</label>
+              <div class="form-check form-switch checked">
+               {{form_widget(form.idTypeAnnonce)}}  
+              </div>           
+            </li>
+            <br>
+            <li>
+                <label for="minSurface">Surface minimum:</label>
+                <div>
+                 {{form_widget(form.minSurface, )}} 
+                </div>       
+            </li>        
+            <br>              
+            <li>      
+              <label for="prixMax">Budget maximum:</label>
+              <div>
+                {{form_widget(form.prixMax)}} 
+              </div>    
+            </li>
+            <br> 
+            <li>      
+              <label for="nombrePiece">Nombre de pièces souhaitées</label>
+              <div>
+               {{form_widget(form.nombrePiece)}}  
+               </div>    
+            </li>
+            <br>       
+          {{form_end(form)}}
+          </form>
+        </ul>    
+      </div>
+    </div>
+</div>
+{% block content %}
+
+<div class="col">
+    <div class="container mt-5  mx-auto mt-5 ">  
+    <div class="haut shadow-lg p-3 mb-5 rounded-circle"style="background-color: #0a3a5b; width: 100%;" >
+       <div class="row">
+        <div class="col">
+        <div class="card mb-6 mt-5  shadow-lg p-3 mb-5" style="width: 600px;" >
+             <img src="../uploads/{{ annonce.img }}" class="card-img-top img-fluid" alt="..."> 
+            <div class="card-body"style="background-color: #61b515; width: 100%;" >
+                <h5 class="card-title display-5 rounded-pill" style="background-color: #ffff; color: #0a3a5b">{{ annonce.slug }}</h5>
+                {# <p class="card-text text-white h4">Secteur: {{ annonce.secteur }}</p> #}
+                <p class="card-text text-white h4">Surface: {{ annonce.surface }}</p> 
+                <p class="card-text text-white h4">Nombre de pieces: {{ annonce.nombrePiece }}</p>
+                <p class="card-text text-white h4">Prix: {{ annonce.prix }} euros</p>                        
+                <p class="card-text text-white h4">Exposition: {{ annonce.exposition}}</p>
+                <p class="card-text text-white h4">Exterieur: {{ annonce.exterieur }}</p>
+                <p class="card-text text-white h4">Energie: {{ annonce.energie }}</p> 
+                
+                {# <p class="card-text"><small class="text-muted">{{ annonce.dateParution }}</small></p>  #}
+            </div>
+            </div>
+            </div>
+             <div class="col-2 mt-5">
+             <div class="row mt-5" style="margin-buttom: -150px; margin-left: -150px;">
+             <p class="h2 text-white mt-5">Note du site:</p>           
+             <br>
+             <p class="h2 text-white">3.5/5</p>
+             <br>
+             <div class="mt-5">
+             <button id="contact" type="button" class="btn text-white mt-5" style="background-color: #61b515;">Contacter le proprietaire</button>
+             <div class="align-items-en mt-5">
+             <a href="http://127.0.0.1:8000/annonces" class="text-danger">Retour aux annonces</a>
+              </div>
+             </div>
+             </div>
+
+        </div>
+     </div>   
+    </div>   
+</div>
+</div>
+{% endblock %}
+
+</div>
+</div>
+
+{% endblock %}
+
+
+<script> 
+
+$('#login').click(function() {
+   window.location.href = 'http://127.0.0.1:8000/auth/login';
+});
+
+$('#signUp').click(function() {
+    window.location.href = 'http://127.0.0.1:8000/auth/register';
+});
+
+
+ </script>
+
+
+
+
+{% endblock %}

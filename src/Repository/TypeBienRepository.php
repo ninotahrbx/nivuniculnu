@@ -22,19 +22,19 @@ class TypeBienRepository extends ServiceEntityRepository
     // /**
     //  * @return TypeBien[] Returns an array of TypeBien objects
     //  */
-    /*
-    public function findByExampleField($value)
+   /*  
+    public function findByLibelleType($idBien)
     {
         return $this->createQueryBuilder('t')
-            ->andWhere('t.exampleField = :val')
+            ->andWhere('t.idBien = :v')
             ->setParameter('val', $value)
-            ->orderBy('t.id', 'ASC')
-            ->setMaxResults(10)
+            ->orderBy('t.idType', 'ASC')
+            // ->setMaxResults(10)
             ->getQuery()
             ->getResult()
         ;
     }
-    */
+     */
 
     /*
     public function findOneBySomeField($value): ?TypeBien

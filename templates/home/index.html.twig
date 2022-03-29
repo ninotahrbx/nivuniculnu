@@ -5,11 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../../assets/css/style.css">
-  <link rel="stylesheet" href="../../node_modules/animate.css/animate.min.css">
-  <link rel="stylesheet" href="../../node_modules/aos/dist/aos.css">
-  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../../node_modules/sweetalert2/dist/sweetalert2.min.css">
+  <meta name="theme-color" content="#61b515">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Meow+Script&display=swap" rel="stylesheet">
@@ -17,9 +13,16 @@
   <link href="https://fonts.googleapis.com/css2?family=Teko&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Yaldevi:wght@200&display=swap" rel="stylesheet">
-  <script src="../../node_modules/jquery/dist/jquery.min.js"></script>
-  <script src="../../node_modules/aos/dist/aos.js"></script>
-  <script src="../../node_modules/vue/dist/vue.js"></script>
+   <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@900&family=Yaldevi:wght@200&display=swap" rel="stylesheet"> 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/a751688f9b.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  
+		
+
 {% block title %}QivendQiloue?{% endblock %}
 {% endblock %}
       
@@ -27,206 +30,565 @@
             {{ encore_entry_link_tags('app') }}
 <style>
 h2 {
-    font-family: 'Pacifico', cursive;
-    color: #61b515;
+  font-family: 'Pacifico', cursive;
+  color: #61b515;
 }
-
 a{
-    color: #61b515 !important;
+  color: #61b515 !important;
 }
-
-.slogan {
-    font-family: 'Meow Script', cursive;
-    font-size: 30px;
-    margin-top: 15px;
-    margin-left: 30px;
-}
-
-span{
-    margin-top: auto;
-    margin-bottom: auto;
-}
-
 .photoEntete{
-    background-image: url('../img/entete.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    height: 700px;
-    width: 100%;
-    box-shadow: 1px 0px 1px 1px black;
-    z-index: 1;
+  background-image: url('uploads/entete.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 700px;    
+  box-shadow: 1px 0px 1px 1px black;
+  z-index: 1;
 }
-
-.container-fluid{
-    margin-left: auto;
-    margin-right:auto;
-    width: 100%;
+.container-fluid{    
+  top: 0; left: 0; right: 0;    
 }
-
 .navbar{
-    position: fixed !important;
-    z-index: 2;
-    background-color: white;
-    width: 100%;
-    box-shadow: 1px 0px 1px 1px black;
+  position: fixed !important;
+  z-index: 1;
+  background-color: white;   
+  box-shadow: 1px 0px 1px 1px black;   
+  top: 0; left: 0; right: 0;
 }
-
-.row{
-    margin-left: auto;
-    margin-right: -50px !important;
-    width: 100%;
-}
-
 .nav-item{
-    padding-left: 50px;
-    padding-right: 50px;
-    border-right: 0.3px solid #0a3a5b !important;
-    font-family: 'Meow Script', cursive; 
-    font-size: 30px;
+  padding-left: 50px;
+  padding-right: 50px;
+  border-right: 0.3px solid #0a3a5b !important;
+  font-family: 'Meow Script', cursive; 
+  font-size: 30px;
 }
-
 .card{
-    border: 2px green;
-    text-align: center;
+  border: 2px #0a3a5b;
+  text-align: center;
+  margin: 20px;
 }
-
+.card:hover{
+  -ms-transform: scale(1.2);
+  -webkit-transform: scale(1.2);
+  transform: scale(1.2);
+}
 h5{
-    color: #61b515;
-    font-family: 'Indie Flower', cursive;
-    font-size: 30px !important;
+  color: #61b515;
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px !important;
 }
-
 .nav-item:hover{
-background-color: #61b515;
+  background-color: #61b515;
 }
-
 .nav-link:hover{
-    color: ivory !important;
-    
-transform: scale(1.2);
-color: ivory !important;
+  color: ivory !important;   
+  transform: scale(1.2);
+  color: ivory !important;
 }
-
-#collapseOne{
-    position: relative;
-    z-index: 3;
-}
-
 p{
-    font-family: 'Yaldevi', sans-serif;
+  font-family: 'Yaldevi', sans-serif;
 }
-
-.sousmenu {
-    display: none;
-    }
-     
-   [class*=menu]:hover{
-    display:block;
-    position:relative;
-    z-index: 3;
-    }
-       
-   #logo{
-       z-index: 3;
-       position: absolute;
-       margin-top: -30px;    
-   }
-
-   #slogan{
-       margin-left: 120px;
-       z-index: 3;
-       position: absolute;
-       margin-top: -20px;
-   }
-
-   .btn{
-       background-color: #0a3a5b;
-   }
-
-   .toit{
-    background-color: #61b515;  
-    width: 100%;
-  height: 400px;
-  border-left: 1272px solid transparent;
-  border-right: 1272px solid transparent;
-  border-bottom: 150px  solid #ffffff;                   
-   }
-
-.gouttiere{
-    height: 30px;
-    background-color: rgb(186, 190, 150);    
-    border-left: 1270px solid transparent;
-    border-right: 1270px solid transparent;
-    border-bottom: 100px  solid white;      
+#logo{
+  z-index: 1;             
 }
-
-   .fenetre{
-    background-color: white;  
-    height: 400px;
-   }
-
-   .space{
-       height: 80px;
-   }
-
-   .facade{
-       height: 400px;
-   }
+#slogan{
+  font-family: 'Meow Script', cursive;
+  font-size: 40px;       
+  margin-left: 150px;
+  color: #0a3a5b;     
+}
+#titre{
+  margin-left: 40px;
+  font-family: 'Merriweather', serif;
+  color:#61B515;
+}
+.btn{
+  background-color: #0a3a5b;       
+}
+.space{
+  height: 80px;
+}
+span{
+  color: #0a3a5b !important;
+}
+/* CUSTOMIZE THE CAROUSEL
+-------------------------------------------------- */
+/* Carousel base class */
+.carousel {
+  margin-bottom: 200px; 
+  background-color: #61b515 !important;
+}
+/* Since positioning the image, we need to help out the caption */
+.carousel-caption {
+  bottom: 3rem;
+  z-index: auto;
+}
+/* Declare heights because of positioning of img element */
+.carousel-item {
+  height: 32rem;
+}
+.carousel-item > img {
+  position: relative;
+  top: 0;
+  left: 0;
+  min-width: 100%; 
+}
+#myCarousel{
+  background-color: #61b515 !important;
+}
+footer{
+  margin-top: 200px;
+}
+/* RESPONSIVE CSS
+-------------------------------------------------- */
+@media (min-width: 40em) {
+  /* Bump up size of carousel content */
+  .carousel-caption p {
+    margin-bottom: 1.25rem;
+    font-size: 1.25rem;
+    line-height: 1.4;
+  } 
+}
 </style>
 {% endblock %}
+
 {% block javascripts %}
             {{ encore_entry_script_tags('app') }}
 {% endblock %}
+
 {% block body %}
-{% block content %}
 
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <img id="logo" class="img-fluid" src="uploads/logo.png" style="height: 80px; width: 80px;" alt="">
+    <h1 id="titre" class="">Qi vend Qi loue ?</h1>
+    <h3 id="slogan" class="justify-content-center">l'immo intelligent !!</h3>
+    <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">Acceuil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces/creer-annonce">Vendre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/annonces">Acheter</a>
+        </li>
+
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces">Louer</a>
+        </li>        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Nous joindre</a></li>
+            <li><a class="dropdown-item" href="#">à propos</a></li>
+            
+          </ul>
+        </li>       
+      </ul>    
+      
+     
+    
+        <div class="text-end text-white justify-content-end">
+          <button id="login" type="button" class="btn text-white">Connexion</button>
+          <button id="signUp" type="button" class="btn text-white">Inscription</button>
+          <button id="logout" type="button" class="btn text-white">Deconnexion</button>
+        </div>      
+    </div>
+  </div>
+</nav>
+  </header>
+{% endblock %}
+
+{% block entete %}
   <div class="container-fluid px-0">
-    <div class="photoEntete"></div>
+    <img class="img-fluid"> <div class="photoEntete"></div></img>
   </div>
+{% endblock %}
 
+{% block card %}
+  <div class="container-md mt-5">
+    <div class="row justify-content-center mt-5">     
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Vous souhaitez acheter?</h5>     
+            <p class="card-text">Cherchez un bien qui vous fait rever !</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <a href="http://127.0.0.1:8000/annonces" class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</a>
+          </div>
+        </div>
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Vous souhaitez louer?</h5>     
+            <p class="card-text">Cherchez la location qui vous correspond !</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <a href="http://127.0.0.1:8000/annonces" class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</a>
+          </div>
+        </div>       
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Vous avez une question ?</h5>     
+            <p class="card-text">Nous répondrons a vos questions ici.. </p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <a id="question" href="http://127.0.0.1:8000/home/contact" class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</a>
+          </div>
+        </div>     
+    </div>
+  </div>  
   
-
-  <div class="container">
-    <div class="row ">
-      <div id="card-choice" class="card-group">
-        <themeCard v-for="item in processList" v-bind:todo="item" v-bind:key="item.id"></themeCard>
-      </div>
+ <div class="container mt-5">
+    <div class="row justify-content-center">     
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Vous souhaitez vendre bien ?</h5>     
+            <p class="card-text">Déposez votre annonce ici..</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <button id="vendre" class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</button>
+          </div>
+        </div>
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Vous etes bailleur ?</h5>     
+            <p class="card-text">Louez votre bien ici..</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <button id="louer"  class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</button>
+          </div>
+        </div>       
+        <div class="card mt-5 h-80 border-top-0 border-0 shadow" style="width: 18rem;">
+          <div class="card-body">
+            <h5 class="card-title">Comment ça fonctionne ?</h5>     
+            <p class="card-text">Consultez la documentation..</p>
+            <h6 class="card-subtitle mb-2 text-muted">{{ subtitle }}</h6>
+            <a href="http://127.0.0.1:8000/home/documentation" class="btn  btn-sm  mt-2 shadow-sm text-white" style="background-color: #0a3a5b;">{{ event }}</a>
+          </div>
+        </div>     
     </div>
-  </div>
+  </div>    
+{% endblock %}
 
-  <div class="container">
-    <div class="row ">
-      <div id="card-choice-again" class="card-group">
-        <themeCardAgain v-for="item in processList" v-bind:todo="item" v-bind:key="item.id"></themeCardAgain>
-      </div>
-    </div>
-  </div>
 <div class="space"></div>
  
-  <div class="toit">
-    <div class="row ">
-      <div id="card-choice-again" class="card-group">
-        
-        <theme_card_again v-for="item in processList" v-bind:todo="item" v-bind:key="item.id"></theme_card_again>
-      </div>
-    </div>
- 
+  
 
-  <div class="fenetre">
-    <div class="row ">
-      <div id="card-choice-again" class="card-group">
-        <theme_card_again v-for="item in processList" v-bind:todo="item" v-bind:key="item.id"></theme_card_again>
+  
+ 
+{% block caroussel %}
+<div id="myCarousel" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+
+        <svg class="bd-placeholder-img" width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#61b515"/></svg>
+
+        <div class="container-fluid">
+          <div class="carousel-caption ">
+            <h1>Trouvez votre bien.</h1>
+            <img class="img-fluid" src="uploads/fondek2.jpg">
+            <p>Un site intuitif, accessible à tous et gratuit !! </p>
+            <p><a class="btn btn-lg btn-primary text-white" href="./annonces" style="min-width: 130px;">Rechercher</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#61b515"/></svg>
+
+        <div class="container-fluid">
+          <div class="carousel-caption">
+            <h1>Une demarche simplifiée.</h1>
+            <img class="img-fluid" src="uploads/fondek.jpg" >
+            <p>Communiquez de particulier à particulier en toute securité !</p>
+            <p><a class="btn btn-lg btn-primary text-white" href="./annonces/creer-annonce" style="min-width: 130px;">Déposer</a></p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <svg class="bd-placeholder-img" width="100%" height="100%"  aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#61b515"/></svg>
+
+        <div class="container-fluid">
+          <div class="carousel-caption ">
+            <h1>Faites des économies.</h1>
+            <img class="img-fluid" src="uploads/fondek3.jpg" >
+            <p>L'alternative aux agences coûteuses.</p>
+            <p><a class="btn btn-lg btn-primary text-white" href="./documentation" style="min-width: 130px;">Lire</a></p>
+          </div>
+        </div>
       </div>
     </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+</div>
+{% endblock %}
+
+
+
+{% block featurette %}
+<div class="container">
+ <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">"Facile et gratuit!" <span style="color: #0a3a5b;">"J'y retourne pour mes enfants".</span></h2>
+        <p class="lead">Comme Martine, trouvez 'LA' maison sereinement sans vous compliquer la vie..</p>
+      </div>
+      <div class="col-md-5">
+        {# <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="uploads/satisfait4.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> #}
+        <img class="img-fluid rounded-lg"  min-width="500px" min-height="500px" src="uploads/satisfait4.png">
+
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7 order-md-2">
+        <h2 class="featurette-heading">"Super intuitif !" <span style="color: #0a3a5b;">"J'ai trouvé mon appart.. !!"</span></h2>
+        <p class="lead">Si Jérémy peut trouver, VOUS aussi !! Inscrivez vous et sautez le pas !! </p>
+      </div>
+      <div class="col-md-5 order-md-1">
+        {# <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="./public/uploads/satisfait3.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> #}
+        <img class="img-fluid rounded-lg"  min-width="500px" min-height="500px" src="uploads/satisfait6.png">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+
+    <div class="row featurette">
+      <div class="col-md-7">
+        <h2 class="featurette-heading">"J'ai trouver un bien selon mes critères." <span style="color: #0a3a5b;">"Parfait !"</span></h2>
+        <p class="lead">Si, comme Nathalie, vous êtes exigent(e), " <a href="#" style="font-family: 'Pacifico', cursive;" >Qi vend Qi loue ?</a> " est la solution !!</p>
+      </div>
+      <div class="col-md-5">
+        {# <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="./public/uploads/satisfait5.jpg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#eee"/><text x="50%" y="50%" fill="#aaa" dy=".3em">500x500</text></svg> #}
+        <img class="img-fluid rounded-lg"  min-width="500px" min-height="500px" src="uploads/satisfait5.jpg">
+      </div>
+    </div>
+
+    <hr class="featurette-divider">
+</div>
+{% endblock %}
+
+{% block footer %}
+
+<!-- Footer -->
+<footer class="text-center text-lg-start  text-white" style="background-color: #083e62;">
+  <!-- Section: Social media -->
+  <section
+    class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+  >
+    <!-- Left -->
+    <div class="me-5 d-none d-lg-block">
+      <span  class="text-white">Suivez nous et soutenez nous également sur les réseaux sociaux:</span>
+    </div>
+    <!-- Left -->
+
+    <!-- Right -->
+    <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"/></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"/></svg></a></li>
+      <li class="ms-3"><a class="text-muted" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"/></svg></a></li>
+    </ul>
+
+     <!-- Section: Social media -->
+    <section class="mb-4">
+      <!-- Facebook -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #3b5998" href="https://www.facebook.com" role="button"><i class="fab fa-facebook-f"></i></a>
+
+      <!-- Twitter -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #55acee" href="https://twitter.com/?lang=fr" role="button"><i class="fab fa-twitter"></i></a>
+
+      <!-- Google -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #dd4b39" href="https://www.google.fr" role="button"><i class="fab fa-google"></i></a>
+
+      <!-- Instagram -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #ac2bac" href="https://www.instagram.com" role="button"><i class="fab fa-instagram"></i></a>
+
+      <!-- Linkedin -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #0082ca" href="https://www.linkedin.com" role="button"><i class="fab fa-linkedin-in"></i></a>
+      <!-- Github -->
+      <a class="btn btn-primary btn-floating m-1" style="background-color: #333333" href="https://github.com/" role="button"><i class="fab fa-github"></i></a>
+    </section>
+    <!-- Section: Social media -->
+    {# <div class="text-white">
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-twitter"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-google"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="" class="me-4 text-reset">
+        <i class="fab fa-github"></i>
+      </a>
+    </div> #}
+    <!-- Right -->
+  </section>
+  <!-- Section: Social media -->
+
+  <!-- Section: Links  -->
+  <section class="">
+    <div class="container text-center text-md-start mt-5">
+      <!-- Grid row -->
+      <div class="row mt-3">
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+          <!-- Content -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            <i class="fas fa-gem me-3"></i>Qi vend Qi loue ?
+          </h6>
+          <p>
+            Entreprise avec 1 employé non rémunéré, chiffre d'affaire -20 euros.
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Products
+          </h6>
+          <p>
+            <a href="https://angular.io/" class="text-reset">Angular</a>
+          </p>
+          <p>
+            <a href="https://fr.reactjs.org/" class="text-reset">React</a>
+          </p>
+          <p>
+            <a href="https://vuejs.org/" class="text-reset">Vue</a>
+          </p>
+          <p>
+            <a href="https://laravel.com/" class="text-reset">Laravel</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Useful links
+          </h6>
+          <p>
+            <a href="#!" class="text-reset">Pricing</a>
+          </p>
+          <p>
+            <a href="#!" class="text-reset">Settings</a>
+          </p>
+          <p>
+            <a href="http://127.0.0.1:8000/home/contact" class="text-reset">Nous contacter</a>
+          </p>
+          <p>
+            <a href="http://127.0.0.1:8000/home/documentation" class="text-reset">Regle du site</a>
+          </p>
+        </div>
+        <!-- Grid column -->
+
+        <!-- Grid column -->
+        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+          <!-- Links -->
+          <h6 class="text-uppercase fw-bold mb-4">
+            Contact
+          </h6>
+          <p><i class="fas fa-home me-3"></i> Roubaix, 59100, FR</p>
+          <p>
+            <i class="fas fa-envelope me-3"></i>
+            blabla@blablabla.com
+          </p>
+          <p><i class="fas fa-phone me-3"></i> 03 20 20 20 20</p>
+          <p><i class="fas fa-print me-3"></i> 06 20 20 20 20</p>
+        </div>
+        <!-- Grid column -->
+      </div>
+      <!-- Grid row -->
+    </div>
+  </section>
+  <!-- Section: Links  -->
+
+  <!-- Copyright -->
+  <div class="text-center p-4 text-white" style="background-color: #0a3a5b;">
+    © 2021 Copyright:
+    <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
   </div>
- 
-<div class="facade"></div>
+  <!-- Copyright -->
+</footer>
+<!-- Footer -->
 
 {% endblock %}
+
+<script src="https://unpkg.com/vue@3"></script>
+
+<script> 
+$('#login').click(function() {
+   window.location.href = 'http://127.0.0.1:8000/auth/login';
+});
+
+$('#signUp').click(function() {
+    window.location.href = 'http://127.0.0.1:8000/auth/register';
+});
+
+$('#logout').click(function() {
+    window.location.href = 'http://127.0.0.1:8000/logout';
+});
+
+$('#vendre').click(function() {
+Swal.fire({
+title:'Merci de vous connecter pour déposer une annonce',
+text:'Cliquez pour continuer',
+timer: 5000
+});
+window.location.href ="http://127.0.0.1:8000/annonces/creer-annonce"
+});
+
+$('#louer').click(function() {
+
+Swal.fire({
+title:'Merci de vous connecter pour déposer une annonce',
+text:'Cliquez pour continuer',
+timer: 5000
+});
+window.location.href ="http://127.0.0.1:8000/annonces/creer-annonce"
+});
+
+$('#question').click(function() {
+
+  Swal.fire({
+title:'Merci de vous connecter pour déposer poser vos questions',
+text:'Cliquez pour continuer',
+timer: 5000
+});
+window.location.href ="http://127.0.0.1:8000/home/contact"
+});
+  
+</script>
+
 <script>AOS.init();</script>
 <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-<script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../../node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
+
+<script src="./node_modules/sweetalert2/dist/sweetalert2.min.js"></script>
 <script src="../../assets/js/main.js"></script>
 {% endblock %}

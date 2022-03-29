@@ -1,20 +1,297 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello AnnoncesController!{% endblock %}
+{% block title %}annonces{% endblock %}
+
+{% block stylesheets %}
+<style>
+h2 {
+  font-family: 'Pacifico', cursive;
+  color: #61b515;
+}
+
+a{
+  color: #61b515 !important;
+}
+
+.photoEntete{
+  background-image: url('uploads/entete.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 700px;   
+  box-shadow: 1px 0px 1px 1px black;
+  z-index: 1;
+}
+
+.container-fluid{   
+  top: 0; left: 0; right: 0;   
+}
+
+.row{
+  left: 0; 
+}
+
+.navbar{
+  position: fixed !important;
+  z-index: 1;
+  background-color: white;    
+  box-shadow: 1px 0px 1px 1px black;   
+  top: 0; left: 0; right: 0;
+}
+
+.nav-item{
+  padding-left: 50px;
+  padding-right: 50px;
+  border-right: 0.3px solid #0a3a5b !important;
+  font-family: 'Meow Script', cursive; 
+  font-size: 30px;
+}
+
+.card{
+  border: 2px green !important;
+  text-align: center;
+}
+
+h5{
+  color: #61b515;
+  font-family: 'Indie Flower', cursive;
+  font-size: 30px !important;
+}
+
+.nav-item:hover{
+  background-color: #61b515;
+}
+
+.nav-link:hover{
+  color: ivory !important;   
+  transform: scale(1.2);
+  color: ivory !important;
+}
+
+p{
+  font-family: 'Yaldevi', sans-serif;
+}
+
+#logo{
+   z-index: 1;     
+ }
+
+#slogan{
+  font-family: 'Meow Script', cursive;
+  font-size: 40px;       
+  margin-left: 150px;
+  color: #0a3a5b;     
+}
+
+.d-flex{
+  position: fixed;
+}
+
+#titre{
+  margin-left: 40px;
+  font-family: 'Merriweather', serif;
+  color:#61B515;
+}
+
+.btn{
+  background-color: #0a3a5b;
+       
+}   
+</style>
+{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
+{{dump(filtres)}}
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a href="http://127.0.0.1:8000/home"><img id="logo" class="img-fluid" src="uploads/logo.png" style="height: 80px; width: 80px;" alt=""></a>
+    <h1 id="titre" class="">Qi vend Qi loue ?</h1>
+    <h3 id="slogan" class="justify-content-center">l'immo intelligent !!</h3>
+    <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/home">Acceuil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces/creer-annonce">Vendre</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="http://127.0.0.1:8000/annonces">Acheter</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/annonces">Louer</a>
+        </li>        
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Contact
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Nous joindre</a></li>
+            <li><a class="dropdown-item" href="#">à propos</a></li>           
+          </ul>
+        </li>       
+      </ul>      
+      <div class="text-end text-white justify-content-end">
+        <button id="login" type="button" class="btn text-white">Login</button>
+        <button id="signUp" type="button" class="btn text-white">Sign-up</button>
+      </div>     
+    </div>
+  </div>
+</nav> 
+{% endblock %}
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ 'C:/Users/nino-/Desktop/fil_rouge/src/Controller/AnnoncesController.php'|file_link(0) }}">src/Controller/AnnoncesController.php</a></code></li>
-        <li>Your template at <code><a href="{{ 'C:/Users/nino-/Desktop/fil_rouge/templates/annonces/index.html.twig'|file_link(0) }}">templates/annonces/index.html.twig</a></code></li>
-    </ul>
+{% block sidebar %}
+<div class="container-fluid filter">
+  <div class="row ">
+    <div class="col mt-3 align-self-center">
+      <div class="d-flex flex-column flex-shrink-0 p-3 text-white align-self-center" style="width: 280px; height: 2000px; background-color:#0a3a5b ;">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32"><use xlink:href="#bootstrap"/></svg>          
+        </a>
+        <br>
+        <ul class="nav nav-pills flex-column mb-auto">
+          <li class="mt-5">
+            <h1 class="text-white" aria-current="page">          
+              Filtres
+            </h1>
+          </li>    
+          <form method="POST" class="filter-form" id="filter"> 
+          {{form_start(form)}}   
+            <li>
+              <label for="minSurface">Type de bien:</label>
+              <div class="form-check form-switch checked">
+               {{form_widget(form.idType)}}  
+              </div>           
+            </li>  
+            <br>  
+            <li>
+              <label for="minSurface">Type d'annonce:</label>
+              <div class="form-check form-switch checked">
+               {{form_widget(form.idTypeAnnonce)}}  
+              </div>           
+            </li>
+            <br>
+            <li>
+                <label for="minSurface">Surface minimum:</label>
+                <div>
+                 {{form_widget(form.minSurface, )}} 
+                </div>       
+            </li>        
+            <br>              
+            <li>      
+              <label for="prixMax">Budget maximum:</label>
+              <div>
+                {{form_widget(form.prixMax)}} 
+              </div>    
+            </li>
+            <br> 
+            <li>      
+              <label for="nombrePiece">Nombre de pièces souhaitées</label>
+              <div>
+               {{form_widget(form.nombrePiece)}}  
+               </div>    
+            </li>
+            <br>       
+          {{form_end(form)}}
+          </form>
+        </ul>    
+      </div>
+    </div>
 </div>
+{% endblock %}
+
+{% block content %}
+<div class="col-12 mt-5">
+  <div class="container-fluid mt-5 justify-content-center mx-auto ">
+    <div class="filtre-sortie"></div>
+    <h1 class="text-center">Liste des annonces</h1>
+    {% for annonce in annonces %}       
+      {% include "annonces/_content.html.twig" %}
+    {% endfor %}
+
+               
+     <nav  aria-label="...">
+        <ul class="pagination justify-content-center">
+            <li class="page-item {{ (page == 1) ? 'disabled' : '' }}">
+                <a class="page-link">Previous</a>
+            </li>
+            {% for item in 1..((total / limit)|round(0, 'ceil')) %} 
+             <li class="page-item {{ (page == item ) ? 'active' : '' }}"><a class="page-link" href="?page={{ item }}">{{ item }}</a></li>                        
+            </li>
+              {% endfor %}           
+
+            <li class="page-item">
+                <a class="page-link" href="#">Next</a>
+            </li>
+        </ul>
+      </nav> 
+         
+  </div>
+</div>
+
+<div class="filtre-pagination">
+ {# {{ knp_pagination_render(annonces) }}    #}
+</div>
+
+{# <ul class="pagination">
+ <li class="{{ (page == 1) ? 'disabled' : '' }}">
+            <a class="page-link" href="?page=1&{{queryString}}" aria-label="Previous">
+               Previous
+            </a>
+        </li>    
+        <li class="{{ (page == 1) ? 'disabled' : '' }}">
+            <a href="{{ (page > 1) ? '?page=' ~ (page - 1) : '' }}&{{queryString}}">
+                <i class="fas fa-angle-left"></i>
+            </a>
+        </li>
+
+  {% for item in 1..((total / limit)|round(0, 'ceil')) %}
+  <li class="{{ (page == item) ? 'active' : '' }}">
+    <a href="?page={{ item }}">{{ item }}</a>
+  </li>
+  {% endfor %}
+
+  <li class="{{ (page == pages) ? 'disabled' : '' }} ">
+      <a href="{{ (page < pages) ? '?page=' ~ (page + 1) : '' }}&{{queryString}}" aria-label="Next">
+          Next
+      </a>
+  </li>
+    <li class="{{ (page == pages) ? 'disabled' : '' }}">
+        <a href="?page={{ pages }}&{{queryString}}">
+            <i class="fas fa-step-forward"></i>
+        </a>
+    </li>
+</ul> #}
+
+ #}
+
+
+
+
+{% endblock %}
+
+
+<script>
+ $('#login').click(function() {
+   window.location.href = 'http://127.0.0.1:8000/auth/login';
+});
+
+$('#signUp').click(function() {
+    window.location.href = 'http://127.0.0.1:8000/auth/register';
+});
+
+
+
+
+
+
+
+
+
+</script>
+
 {% endblock %}
